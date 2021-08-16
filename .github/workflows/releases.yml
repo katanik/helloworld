@@ -16,6 +16,7 @@ jobs:
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}/linux/build/
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
@@ -38,6 +39,7 @@ jobs:
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}/windows/build/
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
@@ -60,6 +62,7 @@ jobs:
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}\macos\build\
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
