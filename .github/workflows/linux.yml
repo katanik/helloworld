@@ -34,7 +34,7 @@ jobs:
       id: create_release_for_linux
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
