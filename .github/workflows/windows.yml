@@ -43,12 +43,12 @@ jobs:
         prerelease: false
 
     - name: Upload Release ${{ runner.os }}
-      uses: actions/upload_release_asset@v1
+      uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release_for_windows.outputs.upload_url }}
-        asset_path: ./bin/Release/helloworld.exe
+        asset_path: target/Release/helloworld.exe
         asset_name: helloworld.exe
-        asset_content_type: application/exe
+        asset_content_type: application/vnd.microsoft.portable-executable
 
