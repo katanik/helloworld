@@ -41,3 +41,16 @@ jobs:
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: true
         prerelease: true
+
+    - name: Upload Release ${{ runner.os }}
+      id: upload_release_for_windows
+      uses: actions/upload_release_asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release_for_windows.outputs.upload_url }}
+        asset_path: ./helloworld.zip
+        asset_name: helloworld.zip
+        asset_context_type: application/zip
+
+       
