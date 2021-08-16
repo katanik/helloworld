@@ -49,6 +49,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release_for_windows.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/build/helloworld.exe
-        asset_name: helloworld.exe
-        asset_context_type: application/exe
+
