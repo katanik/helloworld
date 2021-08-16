@@ -46,10 +46,13 @@ jobs:
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
-    - name: Output Release URL File
-      run: echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
-    - name: Save Release URL File for publish
-      uses: actions/upload-artifact@v1
+
+    - name: Upload Release ${{ runner.os }}
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        name: release_url
-        path: release_url.txt
+        upload_url: ${{ steps.create_release_for_macos.outputs.upload_url }}
+        asset_path: ${{github.workspace}}/build/Release/helloworld
+        asset_name: helloworld
+        asset_content_type: application/vnd.microsoft.portable-executable
