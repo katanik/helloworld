@@ -8,18 +8,21 @@ on:
 
 jobs:
   release:
-    name: Create Github Release
-    runs-on: ubuntu-latest
+    name: Create Github Release for linux
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-10.15, windows-2019]
     steps:
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1.0.0
+      uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}/build/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.run_id }}
-        release_name: Release ${{ github.run_id }}
+        release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
     - name: Output Release URL File
