@@ -18,7 +18,7 @@ jobs:
         GHR_PATH: ${{github.workspace}}/linux/build/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.run_id }}
+        tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
@@ -41,7 +41,7 @@ jobs:
         GHR_PATH: ${{github.workspace}}/windows/build/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.run_id }}
+        tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
@@ -64,7 +64,7 @@ jobs:
         GHR_PATH: ${{github.workspace}}\macos\build\
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.run_id }}
+        tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
