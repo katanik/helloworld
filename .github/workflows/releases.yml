@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macos-10.15, windows-2019]
     steps:
     - name: Create Release
       id: create_release
