@@ -1,4 +1,4 @@
-name: CMake
+name: Windows
 
 on:
   push:
@@ -39,7 +39,6 @@ jobs:
       id: create_release_for_windows
       uses: actions/create-release@v1
       env:
-        GHR_PATH: ${{github.workspace}}/windows/build/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
