@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  release:
+  release-linux:
     name: Create Github Release
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +30,7 @@ jobs:
         name: release_url
         path: release_url.txt
 
-  release:
+  release-windows:
     name: Create Github Release
     runs-on: windows-2019
     steps:
@@ -53,7 +53,7 @@ jobs:
         name: release_url
         path: release_url.txt
 
-  release:
+  release-macos:
     name: Create Github Release
     runs-on: macos-10.15
     steps:
