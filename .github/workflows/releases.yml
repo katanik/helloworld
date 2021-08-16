@@ -8,15 +8,14 @@ on:
 
 jobs:
   release-linux:
-    name: Create Github Release
+    name: Create Github Release for linux
     runs-on: ubuntu-latest
     steps:
-    - name: Create Release
+    - name: Create Release ${{ runner.os }}
       id: create_release_for_linux
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}/linux/build/
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
@@ -31,15 +30,14 @@ jobs:
         path: release_url.txt
 
   release-windows:
-    name: Create Github Release
+    name: Create Github Release for windows
     runs-on: windows-2019
     steps:
-    - name: Create Release
+    - name: Create Release ${{ runner.os }}
       id: create_release_for_windows
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}/windows/build/
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
@@ -54,15 +52,14 @@ jobs:
         path: release_url.txt
 
   release-macos:
-    name: Create Github Release
+    name: Create Github Release for macos
     runs-on: macos-10.15
     steps:
-    - name: Create Release
+    - name: Create Release ${{ runner.os }}
       id: create_release_for_macos
       uses: actions/create-release@v1
       env:
         GHR_PATH: ${{github.workspace}}\macos\build\
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
