@@ -37,7 +37,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        tag_name: ${{ runner.os }}${{ github.ref }}
+        tag_name: ${{ runner.os }}${{ github.run_id }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
         draft: false
         prerelease: false
