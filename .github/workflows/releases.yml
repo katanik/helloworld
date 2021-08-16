@@ -2,17 +2,18 @@ name: Releases
 
 on: 
   push:
-    tags:
-    - '*'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-
-  build:
+  create-release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Create a release
     - uses: actions/release-action@v1
       with:
-        artifacts: "release.tar.gz,foo/*.txt"
-        bodyFile: "body.md"
         token: ${{ secrets.GITHUB_TOKEN }}
+
