@@ -40,8 +40,8 @@ jobs:
       uses: AButler/upload-release-assets@v2.0
       with:
         files: 'artifacts/*;packages/*.nupkg'
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
         release_tag: ${{ runner.os }}${{ github.run_id }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
         #release_name: Release for ${{ runner.os }} ${{ github.run_id }}
 
 
