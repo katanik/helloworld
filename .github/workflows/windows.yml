@@ -39,8 +39,8 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release for ${{ runner.os }} ${{ github.run_id }}
-        draft: true
-        prerelease: true
+        draft: false
+        prerelease: false
 
     - name: Upload Release ${{ runner.os }}
       id: upload_release_for_windows
@@ -52,5 +52,3 @@ jobs:
         asset_path: ./helloworld.zip
         asset_name: helloworld.zip
         asset_context_type: application/zip
-
-       
