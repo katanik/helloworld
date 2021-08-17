@@ -47,7 +47,8 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release_for_linux.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/build/bin/Release/helloworld.exe
+        asset_path: ${{github.workspace}}/build/bin/Release/helloworld
         asset_name: helloworld
-        asset_content_type: application/vnd.microsoft.portable-executable
+        asset_content_type: application/octet-stream
+
 
