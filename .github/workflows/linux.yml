@@ -30,25 +30,27 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/linux --config ${{env.BUILD_TYPE}}
 
+    - name: Archive
+      uses: theodor0/ziprelease@master
+      with: 
+        filename: helloworld.zip
+
     - name: Create Release ${{ runner.os }}
       id: create_release_for_linux
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
-        tag_name: ${{ runner.os }}${{ github.run_id }}
-        release_name: Release for ${{ runner.os }} ${{ github.run_id }}
-        draft: false
-        prerelease: false
-
+        tag_name: ${{ runner.os }}${{ github.run_number }}
+        release_name: Release for ${{ runner.os }} ${{ github.run_number }}
     - name: Upload Release ${{ runner.os }}
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release_for_linux.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/build/linux/
-        asset_name: helloworld.zip
-        asset_content_type: application/gzip
+        asset_path: ./helloworld.zip
+        asset_name: helloworld-v${{ github.run_number }}.zip
+        asset_content_type: application/zip
 
 
