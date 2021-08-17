@@ -30,11 +30,6 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/linux --config ${{env.BUILD_TYPE}}
 
-    - name: download
-      uses: actions/download-artifact@v2
-      with:
-        name: static-site
-
     - name: Archive
       uses: montudor/action-zip@v1
       with: 
