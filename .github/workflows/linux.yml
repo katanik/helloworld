@@ -47,8 +47,8 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release_for_linux.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/build/linux/Release/helloworld
-        asset_name: helloworld
-        asset_content_type: application/octet-stream
+        asset_path: ${{github.workspace}}/build/linux/
+        asset_name: helloworld.zip
+        asset_content_type: application/gzip
 
 
