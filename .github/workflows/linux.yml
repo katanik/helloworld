@@ -30,7 +30,8 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/linux --config ${{env.BUILD_TYPE}}
 
-create-release:
+  create-release:
+    name: helloworld to Github Releases
     runs-on: ubuntu-latest
     needs: build-linux 
     steps:
