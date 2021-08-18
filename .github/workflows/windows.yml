@@ -40,7 +40,6 @@ jobs:
   #  - uses: actions/checkout@v2
 
     - name: Archive
-    - uses: actions/checkout@v2
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "helloworld.tar.gz,foo/*.txt"
