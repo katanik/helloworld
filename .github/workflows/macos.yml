@@ -41,7 +41,7 @@ jobs:
     - name: Archive
       uses: papeloto/action-zip@v1
       with:
-        files: build\macos\Release\
+        files: build\macos\
         dest: helloworld.zip
 
     - name: Create Release ${{ runner.os }}
@@ -60,5 +60,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release_for_macos.outputs.upload_url }}
         asset_path: ./helloworld.zip
-        asset_name: helloworld-v${{ github.run_number }}.zip
+        asset_name: helloworld-${{ runner.os }}-${{ github.run_number }}.zip
         asset_content_type: application/zip
