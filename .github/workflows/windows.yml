@@ -41,7 +41,8 @@ jobs:
     - name: Archive
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "helloworld.tar.gz,foo/*.txt"
+        artifacts: "helloworld.tar.gz"
+        body: ${{github.workspace}}/build/windows
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release ${{ runner.os }}
