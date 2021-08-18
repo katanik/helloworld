@@ -33,7 +33,7 @@ jobs:
 
   create-release:
     name: Create release and move it to GitHub Releases
-    needs: build-linux
+    needs: build-windows
     runs-on: ubuntu-latest
 
     steps:
