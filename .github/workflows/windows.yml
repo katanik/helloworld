@@ -40,9 +40,12 @@ jobs:
   #  - uses: actions/checkout@v2
     - name: Archive
       uses: ncipollo/release-action@v1
-      with:
-        artifacts: "build/windows/*.*"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          artifacts: helloworld.zip
+          tag: "${{ runner.os }}${{ github.run_number }}"
+          commit: helloworld
+          body: "New Release of documentation"
+          token: ${{ secrets.AUTO_RELEASE_TOKEN }}
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_windows
