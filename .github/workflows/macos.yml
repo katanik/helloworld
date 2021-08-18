@@ -12,7 +12,7 @@ env:
 
 jobs:
 
-  build-macosx:
+  build-macos:
     # The CMake configure and build commands are platform agnostic and should work equally
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
@@ -31,7 +31,7 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}\build\macos --config ${{env.BUILD_TYPE}}
 
-  create-release:
+  create-release-for-macos:
     name: Create release and move it to GitHub Releases
     needs: build-macos
     runs-on: macos-10.15
