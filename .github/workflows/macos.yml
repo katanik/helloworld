@@ -36,13 +36,10 @@ jobs:
     needs: build-macos
     runs-on: macos-10.15
 
-    steps:
-    - uses: actions/checkout@v2
-
     - name: Archive
       uses: papeloto/action-zip@v1
       with:
-        files: /build/macos
+        files: build\macos\Release\
         dest: helloworld.zip
 
     - name: Create Release ${{ runner.os }}
