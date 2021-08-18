@@ -31,15 +31,37 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/windows --config ${{env.BUILD_TYPE}}
 
-  #create-release-for-windows:
-  #  name: Create release and move it to GitHub Releases
-  #  needs: build-windows
-  #  runs-on: windows-2019
+  create-release-for-windows:
+    name: Create release and move it to GitHub Releases
+    needs: build-windows
+    runs-on: windows-2019
 
-  #  steps:
-  #  - uses: actions/checkout@v2
-    - name: Create release
-      uses: ncipollo/release-action@v1
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Archive
+      uses: papeloto/action-zip@v1
       with:
-        token: ${{ secrets.AUTO_RELEASE_TOKEN }}
+        files: /build/windows/*
+        dest: helloworld.zip
+
+    - name: Create Release ${{ runner.os }}
+      id: create_release_for_windows
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        tag_name: ${{ runner.os }}${{ github.run_number }}
+        release_name: Release for ${{ runner.os }} ${{ github.run_number }}
+
+    - name: Upload Release ${{ runner.os }}
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release_for_windows.outputs.upload_url }}
+        asset_path: ./helloworld.zip
+        asset_name: helloworld-v${{ github.run_number }}.zip
+        asset_content_type: application/zip
+
 
