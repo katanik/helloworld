@@ -30,13 +30,7 @@ jobs:
     - name: Build
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/windows --config ${{env.BUILD_TYPE}}
-  
-  create-release-for-windows:
-    name: Create release and move it to GitHub Releases
-    needs: build-windows
-    runs-on: windows-2019
-    
-    steps:
+
     - name: Archive
       uses: papeloto/action-zip@v1
       with:
