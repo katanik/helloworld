@@ -40,10 +40,11 @@ jobs:
   #  - uses: actions/checkout@v2
 
     - name: Archive
-      uses: papeloto/action-zip@v1
+    - uses: actions/checkout@v2
+    - uses: ncipollo/release-action@v1
       with:
-        files: ${{github.workspace}}/build/windows
-        dest: helloworld.zip
+        artifacts: "helloworld.tar.gz,foo/*.txt"
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_windows
