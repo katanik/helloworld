@@ -37,11 +37,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@master
     - name: Archive
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'release.zip'
+        filename: 'helloworld.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
 
     - name: Create Release ${{ runner.os }}
