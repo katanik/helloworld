@@ -31,12 +31,12 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/windows --config ${{env.BUILD_TYPE}}
 
-  create-release-for-windows:
-    name: Create release and move it to GitHub Releases
-    needs: build-windows
-    runs-on: windows-2019
+  #create-release-for-windows:
+  #  name: Create release and move it to GitHub Releases
+  #  needs: build-windows
+  #  runs-on: windows-2019
 
-    steps:
+  #  steps:
     - uses: actions/checkout@v2
 
     - name: Archive
