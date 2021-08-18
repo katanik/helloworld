@@ -33,27 +33,27 @@ jobs:
       run: cmake --build ${{github.workspace}}\build\macos --config ${{env.BUILD_TYPE}}
 
     - uses: actions/checkout@v1
-    - name: create release
-      id: create_release
+    - name: Create release for macos
+      id: create_release-for-macos
       uses: actions/create-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false   
+        tag_name: ${{ runner.os }}${{ github.run_number }}
+        release_name: Release for ${{ runner.os }} ${{ github.run_number }}
+
     - name: download artifacts
       uses: actions/download-artifact@v1
       with:
-        name: uploads    
+        name: uploads
+
     - name: upload macos
       id: upload-macos 
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: ${{ steps.create_release-for-macos.outputs.upload_url }}
         asset_path: ./uploads/macos.zip
-        asset_name: macos.zip
+        asset_name: helloworld-${{ runner.os }}-${{ github.run_number }}.zip
         asset_content_type: application/zip  
