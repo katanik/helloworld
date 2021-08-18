@@ -35,7 +35,7 @@ jobs:
     - name: Archive
       uses: papeloto/action-zip@v1
       with:
-        files: build\macos\
+        files: ${{github.workspace}}
         dest: helloworld-${{ runner.os }}.zip
 
     - name: Create Release ${{ runner.os }}
