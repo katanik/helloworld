@@ -34,7 +34,7 @@ jobs:
   create-release:
     name: Create release and move it to GitHub Releases
     needs: build-windows
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
