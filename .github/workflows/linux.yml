@@ -40,7 +40,7 @@ jobs:
     - name: Archive
       uses: montudor/action-zip@v1
       with: 
-        args: zip -qq -r helloworld.zip ${{github.workspace}}/build
+        args: zip -qq -r . -i helloworld.zip ${{github.workspace}}/build
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_linux
