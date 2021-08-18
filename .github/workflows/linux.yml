@@ -40,7 +40,7 @@ jobs:
     - name: Archive
       uses: montudor/action-zip@v1
       with: 
-        args: zip -qq -r helloworld.zip . -i build
+        args: zip -qq -r helloworld.zip ${{github.workspace}}/build
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_linux
@@ -58,7 +58,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release_for_linux.outputs.upload_url }}
         asset_path: ./helloworld.zip
-        asset_name: helloworld-v${{ github.run_number }}.zip
+        asset_name: helloworld-${{ github.run_number }}.zip
         asset_content_type: application/zip
 
 
