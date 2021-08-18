@@ -33,11 +33,11 @@ jobs:
       run: cmake --build ${{github.workspace}}\build\macos --config ${{env.BUILD_TYPE}}
 
     - uses: actions/checkout@v1
-    - name: Create release for macos
-      id: create_release-for-macos
-      uses: actions/create-release@master
+    - name: Create Release ${{ runner.os }}
+      id: create_release_for_macos
+      uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         tag_name: ${{ runner.os }}${{ github.run_number }}
         release_name: Release for ${{ runner.os }} ${{ github.run_number }}
