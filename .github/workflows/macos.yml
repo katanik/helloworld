@@ -35,9 +35,7 @@ jobs:
     - name: Archive
       uses: thedoctor0/zip-release@master
       with:
-        type: 'zip'
-        filename: 'release.zip'
-        path: 'build'
+        filename: helloworld.zip
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_macos
@@ -54,7 +52,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release_for_macos.outputs.upload_url }}
-        asset_path: release.zip
+        asset_path: helloworld.zip
         asset_name: helloworld-${{ runner.os }}-${{ github.run_number }}.zip
         asset_content_type: application/zip
 
