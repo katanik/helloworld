@@ -45,7 +45,6 @@ jobs:
     - name: download artifacts
       uses: actions/download-artifact@v1
       with:
-        name: helloworld.zip
         path: ${{github.workspace}}/uploads/
 
     - name: upload macos
@@ -55,6 +54,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release-for-macos.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/uploads/helloworld.zip
+        asset_path: ${{github.workspace}}/uploads/
         asset_name: helloworld-${{ runner.os }}-${{ github.run_number }}.zip
         asset_content_type: application/zip  
