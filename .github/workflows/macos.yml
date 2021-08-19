@@ -33,10 +33,11 @@ jobs:
       run: cmake --build ${{github.workspace}}\build\macos --config ${{env.BUILD_TYPE}}
 
     - name: Archive
-      uses: papeloto/action-zip@v1
+      uses: thedoctor0/zip-release@master
       with:
-        files: build
-        dest: helloworld-${{ runner.os }}.zip
+        type: 'zip'
+        filename: 'release.zip'
+        path: './build/macos'
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_macos
