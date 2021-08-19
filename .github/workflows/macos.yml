@@ -45,7 +45,7 @@ jobs:
     - name: download artifacts
       uses: actions/download-artifact@v1
       with:
-        name: uploads
+        name: ./uploads/macos.zip
 
     - name: upload macos
       id: upload-macos 
