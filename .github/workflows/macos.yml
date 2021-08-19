@@ -36,7 +36,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         filename: helloworld.zip
-        path: ${{github.workspace}}/build
+        path: ${{github.workspace}}
 
     - name: Create Release ${{ runner.os }}
       id: create_release_for_macos
