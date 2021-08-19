@@ -32,7 +32,12 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}\build\macos --config ${{env.BUILD_TYPE}}
 
-    - uses: actions/checkout@v1
+    - name: Archive
+      uses: papeloto/action-zip@v1
+      with:
+        files: build/macos/Release
+        dest: helloworld-${{ runner.os }}.zip
+
     - name: Create Release ${{ runner.os }}
       id: create_release_for_macos
       uses: actions/create-release@v1
@@ -42,18 +47,13 @@ jobs:
         tag_name: ${{ runner.os }}${{ github.run_number }}
         release_name: Release for ${{ runner.os }} ${{ github.run_number }}
 
-    - name: download artifacts
-      uses: actions/download-artifact@v1
-      with:
-        path: ${{github.workspace}}/uploads/
-
-    - name: upload macos
-      id: upload-macos 
+    - name: Upload Release ${{ runner.os }}
       uses: actions/upload-release-asset@v1.0.1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        upload_url: ${{ steps.create_release-for-macos.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/uploads/
+        upload_url: ${{ steps.create_release_for_macos.outputs.upload_url }}
+        asset_path: ./helloworld-${{ runner.os }}.zip
         asset_name: helloworld-${{ runner.os }}-${{ github.run_number }}.zip
-        asset_content_type: application/zip  
+        asset_content_type: application/zip
+
