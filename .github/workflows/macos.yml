@@ -32,6 +32,10 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build/macos --config ${{env.BUILD_TYPE}}
 
+    - name: Run tests
+      # Run 'test' cmake target
+      run: cmake --build ${{github.workspace}}/build/macos --config ${{env.BUILD_TYPE}} --target test
+
     - name: Archive
       uses: papeloto/action-zip@v1
       with:
