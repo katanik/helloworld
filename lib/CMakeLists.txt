@@ -1,3 +1,7 @@
+#if(DEFINED ENV{BUILD_NUMBER})
+#  add_definitions(-DBUILD_NUMBER=$ENV{BUILD_NUMBER})
+#endif()
+
 add_library(hello hello.cpp)
 
 target_include_directories(hello PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
