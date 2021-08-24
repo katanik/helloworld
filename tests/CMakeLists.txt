@@ -10,3 +10,10 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(hello-tests test_hello.cpp)
 
+target_link_libraries(hello-tests gtest_main)
+target_link_libraries(hello-tests hello)
+
+add_custom_target(
+    test $<TARGET_FILE:hello-tests> 
+    DEPENDS hello-tests
+)
