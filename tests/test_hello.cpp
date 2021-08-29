@@ -1,12 +1,5 @@
 #include <gtest/gtest.h>
-
 #include <hello.h>
-
-#ifdef BUILD_NUMBER
-    constexpr int buildNumber = BUILD_NUMBER;
-#else
-    constexpr int buildNumber = std::numeric_limits<int>::max();
-#endif
 
 TEST(Hello, simple)
 {
@@ -18,9 +11,9 @@ TEST(Hello, simple)
 TEST(BuildNumber, simple)
 {
     std::stringstream ss;
-    hello::buildNumber(ss);
+    hello::printBuildNumber(ss);
 
     std::stringstream result;
-    result<<"build "<<buildNumber<<std::endl;
+    result<<"build "<<hello::buildNumber()<<std::endl;
     ASSERT_EQ(result.str(), ss.str());
 }

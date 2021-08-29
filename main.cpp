@@ -3,7 +3,7 @@
 
 int main()
 {
-    hello::buildNumber(std::cout);
+    hello::printBuildNumber(std::cout);
     hello::greetings(std::cout);
     return 0;
 }
