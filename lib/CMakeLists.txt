@@ -1,6 +1,6 @@
-#if(DEFINED ENV{BUILD_NUMBER})
-#  add_definitions(-DBUILD_NUMBER=$ENV{BUILD_NUMBER})
-#endif()
+# Generate header-file template for build number
+configure_file( build_number.h.in ${CMAKE_BINARY_DIR}/generated/build_number.h )
+include_directories( ${CMAKE_BINARY_DIR}/generated/ )
 
 add_library(hello hello.cpp)
 

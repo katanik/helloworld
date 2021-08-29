@@ -1,0 +1,13 @@
+#ifndef BUILD_NUMBER_CONFIG_H
+#define BUILD_NUMBER_CONFIG_H
+
+// define your version_libinterface
+#define BUILD_NUMBER BUILD_NUMBER
+
+// alternatively you could add your global method getLibInterfaceVersion here
+unsigned int getBuildNumber()
+{
+    return @BUILD_NUMBER@;
+}
+
+#endif // BUILD_NUMBER_CONFIG_H
